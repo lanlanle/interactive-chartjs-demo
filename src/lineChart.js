@@ -22,7 +22,8 @@ class LineChart extends React.Component {
 				label: "fitting line",
 				data:[90,null,null,null,null,11],
 				spanGaps:true, 
-				fill:this.props.fillArea
+				fill:false,
+				pointRadius:this.props.pointRadius
 
 		}
 
@@ -31,10 +32,12 @@ class LineChart extends React.Component {
 			datasets:[{
 				label: "raw data",
 				data:[90,72,65,70,23,11],
-				lineTension:0,
+				lineTension:this.props.lineTension,
 				backgroundColor:'rgba(0, 181, 184, 0.28)',
 				borderColor:"#06d6d6", 
-				fill:this.props.fillArea
+				fill:this.props.fillArea,
+				steppedLine:this.props.steppedLine, 
+				pointRadius:this.props.pointRadius
 		
 			}]
 		}
