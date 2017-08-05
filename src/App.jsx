@@ -9,15 +9,23 @@ class App extends Component {
     super();
     this.state = {
       fittingLine:false, 
+      fillArea: false,
       collapse: false 
     }
     this.addFittingLine = this.addFittingLine.bind(this);
     this.collapseCode = this.collapseCode.bind(this);
+    this.fillArea = this.fillArea.bind(this);
   }
 
   addFittingLine() {
     this.setState({
       fittingLine:!this.state.fittingLine
+    })
+  }
+
+  fillArea () {
+    this.setState({
+      fillArea:!this.state.fillArea
     })
   }
 
@@ -30,19 +38,24 @@ class App extends Component {
     return (
       <div>
         <Card style= {{height:"400px"}}>
-           <LineChart  fittingLine = {this.state.fittingLine}/>    
+           <LineChart  fittingLine = {this.state.fittingLine} fillArea = {this.state.fillArea}/>    
         </Card>
-        <Button color= "info" onClick = {this.addFittingLine}> Add fitting line </Button>
+        <Button color= "info" onClick = {this.addFittingLine}> Add Fitting Line </Button>
+        <Button color= "info" onClick = {this.fillArea}> Add Fill Area </Button>
         <Button color= "info" onClick = {this.collapseCode}> Show Code Snippet</Button>
          <Collapse isOpen={this.state.collapse}>
           <Card>
             <CardBlock>
-              <code><samp>data:[90,null,null,null,null,11] <br></br>spanGaps:true</samp></code>
+              <code>
+                <samp>
+                   data:[90,null,null,null,null,11] <br></br> 
+                   spanGaps:true</samp>
+                   </code>
+                   <code>fill:true</code>
             </CardBlock>
           </Card>
         </Collapse>
       </div>
-
     );
   }
 }
